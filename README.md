@@ -59,7 +59,6 @@ Clone the Repository:
 
 git clone <repository_url>
 
-
 (Replace <repository_url> with the actual URL of your Git repository.)
 
 Open in Android Studio:
