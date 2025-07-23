@@ -12,7 +12,8 @@ public class ApiClient {
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://62.146.239.183:30033")
+//                .baseUrl("http://62.146.239.183:30033")
+                .baseUrl("https://learn-api.cambofreelance.com")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build();

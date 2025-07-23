@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
             MessageUtils.showToastMessage("Please enter your username and password",this);
              return;
         }
-        authRepository.login(username, password, new ApiCallbackResponse<LoginResponse>() {
+        authRepository.login(username, password, new ApiCallbackResponse<>() {
             @Override
             public void onLoading(String message) {
                 progressBar.setVisibility(View.VISIBLE);

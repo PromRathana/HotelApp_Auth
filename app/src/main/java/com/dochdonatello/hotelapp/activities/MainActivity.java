@@ -21,7 +21,7 @@ import com.dochdonatello.hotelapp.utils.MessageUtils;
 
 public class MainActivity extends AuthenticatorActivity {
 //    private AuthRepository authRepository;
-    Button btnLogout;
+    private Button btnLogout, btnOpenListCategory;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +32,7 @@ public class MainActivity extends AuthenticatorActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
+        initView();
         //test connection
 //        authRepository = new AuthRepository();
 //        authRepository.login("dinsarenkh33", "123456", new ApiCallbackResponse() {
@@ -53,15 +53,23 @@ public class MainActivity extends AuthenticatorActivity {
 //        });
 
         //btnLogout
-        btnLogout = findViewById(R.id.btnLogout);
+    }
+    private void initView()
+    {
+        this.btnLogout = findViewById(R.id.btnLogout);
+        this.btnOpenListCategory = findViewById(R.id.btnListCategory);
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 UserLocalData.removeUserData(MainActivity.this);
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Clear back stack
+                onResume();
+            }
+        });
+        btnOpenListCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,CategoryActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
     }
