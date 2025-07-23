@@ -1,134 +1,99 @@
-Hotel App
-This is an Android application designed to provide user authentication (login, registration, logout) and display a list of categories, likely for hotel-related services or rooms.
+# 🏨 Hotel App - Android Application
 
-Features
-User Registration: Allows new users to create an account with details such as first name, last name, username, email, phone, and password.
+This Android application provides a simple and intuitive user experience for managing hotel-related user accounts and browsing service categories such as room types or amenities. The app includes user registration, login/logout functionality, and category listing with persistent local session storage.
 
-User Login: Enables existing users to log in using their username and password.
+---
 
-User Logout: Provides functionality for authenticated users to log out of their session.
+## ✨ Features
 
-Category Listing: Displays a list of categories (e.g., room types, hotel services).
+- **👤 User Registration**
+  - Collects: First Name, Last Name, Username, Email, Phone, and Password
+  - Validates password and confirmation match
 
-Local User Data Storage: Stores user session data locally for persistence.
+- **🔐 User Login**
+  - Secure login using username and password
+  - Displays feedback using progress bar and toast messages
 
-Technologies Used
-Android SDK: Core framework for building Android applications.
+- **🚪 User Logout**
+  - Clears local user session data
+  - Returns user to the login screen
 
-Java: The primary programming language used for the application logic.
+- **📋 Category Listing**
+  - Displays available hotel services or room categories
+  - Accessible after successful login
 
-AndroidX Libraries: Modern Android support libraries for backward compatibility and new features (e.g., AppCompatActivity, EdgeToEdge).
+- **💾 Local User Data Storage**
+  - Persists login session using local storage
 
-Retrofit (Implied): Used for making network requests to the backend API (via AuthRepository and ApiCallbackResponse).
+---
 
-Progress Bar: Visual feedback for ongoing operations.
+## 🛠️ Technologies Used
 
-Toast Messages: Simple, short-lived messages for user feedback.
+| Technology        | Purpose                                                   |
+|-------------------|------------------------------------------------------------|
+| **Android SDK**   | Core framework for building Android apps                   |
+| **Java**          | Primary language for app development                       |
+| **AndroidX**      | Modern libraries for compatibility and advanced features   |
+| **Retrofit**      | HTTP client for networking (used in `AuthRepository`)      |
+| **OkHttp**        | Handles network requests with logging support              |
+| **Gson**          | JSON parsing/serialization                                 |
+| **Material Design** | UI components and design system                          |
+| **JUnit & Espresso** | Testing frameworks for unit and UI testing             |
 
-Dependencies
-The following key dependencies are used in this project:
+---
 
-appcompat: Provides backward-compatible versions of Android framework APIs.
+## 📦 Dependencies
 
-material: Implements Material Design components and themes.
+```gradle
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'com.google.code.gson:gson:2.10.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.11.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.11.0'
+    implementation 'androidx.activity:activity:1.7.2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
-gson: A Java serialization/deserialization library to convert Java Objects into JSON and vice-versa.
+    // Testing
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
+```
+## 🚀 Getting Started
 
-converter-gson: A Retrofit converter for Gson.
+### 1. Clone the Repository
 
-logging-interceptor: An OkHttp interceptor that logs HTTP request and response data.
+```bash
+git clone https://github.com/PromRathana/HotelApp_Auth.git
+```
+### 2. Open the Project in Android Studio
+- Launch Android Studio
+- Select File > Open and choose the cloned project directory
+### 3. Sync and Install Dependencies
+- Android Studio will try to sync the Gradle project automatically.
+- If it doesn’t, go to File > Sync Project with Gradle Files
+### 4. Configure Backend API
+- Open AuthRepository.java or relevant configuration file
+- Set your API base URL (make sure your backend is running and accessible)
+### 5. Run the App
+- Connect your Android device (with USB debugging enabled) or use an emulator
+- Click the green Run ▶️ button in Android Studio to install and launch the app
+## 📱 Usage
+### 🔑 Register
+- Open the app and tap "Register"
+- Enter all required fields
+- Tap "Register" to create your account
+- Upon success, you’ll be redirected to the login screen
+### 🔐 Login
+- Enter your username and password
+- Tap "Login"
+- On success, you will be taken to the MainActivity where categories are shown
+### 🚪 Logout
+- After logging in, use the provided Logout mechanism (button or menu)
+- This will clear stored session data and return you to the login screen
+### 📋 View Categories
+- Once logged in, you will see a list of hotel service categories in MainActivity
+- Categories may include room types, services, or other offerings
 
-okhttp: An HTTP client for Android and Java applications.
-
-retrofit: A type-safe HTTP client for Android and Java.
-
-activity: Provides components for managing activity lifecycle and interactions.
-
-constraintlayout: Allows you to create large and complex layouts with a flat view hierarchy.
-
-junit: A unit testing framework for Java.
-
-ext.junit: JUnit extensions for AndroidX Test.
-
-espresso.core: A testing framework for Android UI tests.
-
-Setup and Installation
-To get this project up and running on your local machine, follow these steps:
-
-Clone the Repository:
-
-git clone <repository_url>
-
-(Replace <repository_url> with the actual URL of your Git repository.)
-
-Open in Android Studio:
-
-Launch Android Studio.
-
-Select File > Open or Open an Existing Android Studio Project.
-
-Navigate to the cloned project directory and select it.
-
-Sync Gradle:
-
-Android Studio will automatically try to sync the Gradle project. If it doesn't, click File > Sync Project with Gradle Files.
-
-Install Dependencies:
-
-Ensure all necessary dependencies are downloaded. Android Studio should handle this automatically during Gradle sync.
-
-Configure Backend API (if applicable):
-
-This application relies on a backend API for authentication and data. You will need to ensure your AuthRepository is correctly configured to point to your API endpoints.
-
-Check for any API base URLs or configuration files within the network or data/remote packages that might need updating.
-
-Run on a Device or Emulator:
-
-Connect an Android device to your computer with USB debugging enabled, or set up an Android Emulator.
-
-Click the Run button (green triangle) in Android Studio to deploy the app to your chosen device/emulator.
-
-Usage
-Registration
-From the Login screen, click the "Register" button.
-
-Fill in all the required details (First Name, Last Name, Username, Email, Phone, Password, Confirm Password).
-
-Ensure the password and confirm password fields match.
-
-Click the "Register" button to create your account. A toast message will indicate success or failure.
-
-Upon successful registration, you will be returned to the Login screen.
-
-Login
-On the Login screen, enter your registered username and password.
-
-Click the "Login" button.
-
-A progress bar will appear during the login process.
-
-Upon successful login, you will be navigated to the MainActivity (where categories are likely listed).
-
-Logout
-(Based on the provided code, the logout functionality is not explicitly shown but would typically be implemented in MainActivity or a similar main screen). Once logged in, there should be a "Logout" option (e.g., a button, menu item) that, when clicked, clears local user data and returns to the LoginActivity.
-
-Viewing Categories
-After successful login, the application navigates to MainActivity. This is where the list of categories is expected to be displayed.
-
-Project Structure (Relevant Files)
-activities/LoginActivity.java: Handles user login and navigation to registration/main activity.
-
-activities/RegisterActivity.java: Manages user registration.
-
-data/local/UserLocalData.java: Handles local storage of user session data.
-
-data/remote/repositories/AuthRepository.java: Manages API calls related to authentication (login, register).
-
-network/ApiCallbackResponse.java: Interface for handling API response callbacks (loading, success, error).
-
-utils/MessageUtils.java: Utility class for displaying toast messages.
-
-res/layout/activity_login.xml: Layout file for the login screen.
-
-res/layout/activity_register.xml: Layout file for the registration screen.
