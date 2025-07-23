@@ -59,13 +59,45 @@
             android:layout_marginTop="20dp"
             android:fontFamily="@font/kantumruy_pro_semibold" />
 
-        <Button
-            android:id="@+id/btnLogin"
+<!--        <Button-->
+<!--            android:id="@+id/btnLogin"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="60dp"-->
+<!--            android:layout_marginTop="35dp"-->
+<!--            android:fontFamily="@font/kantumruy_pro_semibold"-->
+<!--            android:text="Login"-->
+<!--            android:textSize="20sp" />-->
+<!--        <Button-->
+<!--            android:id="@+id/btnRegister"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="60dp"-->
+<!--            android:layout_marginTop="35dp"-->
+<!--            android:fontFamily="@font/kantumruy_pro_semibold"-->
+<!--            android:text="Register"-->
+<!--            android:textSize="20sp" />-->
+        <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="35dp">
+            <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="0dp"
             android:layout_height="60dp"
-            android:layout_marginTop="35dp"
-            android:fontFamily="@font/kantumruy_pro_semibold"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp" android:fontFamily="@font/kantumruy_pro_semibold"
             android:text="Login"
             android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/btnRegister"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp" android:fontFamily="@font/kantumruy_pro_semibold"
+                android:text="Register"
+                android:textSize="20sp" />
+
+        </LinearLayout>
     </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

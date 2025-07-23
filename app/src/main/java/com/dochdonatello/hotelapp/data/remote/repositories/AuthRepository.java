@@ -1,7 +1,9 @@
 package com.dochdonatello.hotelapp.data.remote.repositories;
 
 import com.dochdonatello.hotelapp.data.remote.models.request.LoginRequest;
+import com.dochdonatello.hotelapp.data.remote.models.request.RegisterRequest;
 import com.dochdonatello.hotelapp.data.remote.models.response.LoginResponse;
+import com.dochdonatello.hotelapp.data.remote.models.response.RegisterResponse;
 import com.dochdonatello.hotelapp.network.ApiCallbackResponse;
 import com.dochdonatello.hotelapp.network.ApiClient;
 import com.dochdonatello.hotelapp.network.ApiNetwork;
@@ -43,6 +45,49 @@ public class AuthRepository {
         catch (Throwable e)
         {
             callbackResponse.onError("General Error" +e.getMessage());
+        }
+    }
+    //register
+    public void register(
+            String firstName,
+            String lastName,
+            String username,
+            String email,
+            String phoneNumber,
+            String password,
+            ApiCallbackResponse<RegisterResponse> callbackResponse
+    ) {
+        callbackResponse.onLoading("Registering...");
+
+        try {
+            RegisterRequest registerRequest = new RegisterRequest();
+            registerRequest.setFirstName(firstName);
+            registerRequest.setLastName(lastName);
+            registerRequest.setUsername(username);
+            registerRequest.setEmail(email);
+            registerRequest.setPhoneNumber(phoneNumber);
+            registerRequest.setPassword(password);
+            registerRequest.setConfirmPassword(password); // Assuming password == confirmPassword
+            registerRequest.setProfile("NON"); // Hardcoded
+            registerRequest.setRole("USER");   // Hardcoded
+
+            apiNetwork.register(registerRequest).enqueue(new Callback<RegisterResponse>() {
+                @Override
+                public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
+                    if (response.isSuccessful() && response.body() != null) {
+                        callbackResponse.onSuccess(response.body());
+                    } else {
+                        callbackResponse.onError("Registration failed: " + response.message());
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<RegisterResponse> call, Throwable t) {
+                    callbackResponse.onError("Network error: " + t.getMessage());
+                }
+            });
+        } catch (Throwable e) {
+            callbackResponse.onError("General Error : " + e.getMessage());
         }
     }
 }

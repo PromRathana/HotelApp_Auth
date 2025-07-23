@@ -23,7 +23,7 @@ import com.dochdonatello.hotelapp.utils.MessageUtils;
 public class LoginActivity extends AppCompatActivity {
     private EditText etUsername, etPassword;
     private ProgressBar progressBar;
-    private Button btnLogin;
+    private Button btnLogin, btnRegister;
     private AuthRepository authRepository;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +44,20 @@ public class LoginActivity extends AppCompatActivity {
         etUsername = findViewById(R.id.etUsername);
         progressBar = findViewById(R.id.progressbar);
         btnLogin = findViewById(R.id.btnLogin);
+        btnRegister = findViewById(R.id.btnRegister);
         authRepository = new AuthRepository();
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 login();
+            }
+        });
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
+//                finish();
             }
         });
     }
@@ -74,7 +83,7 @@ public class LoginActivity extends AppCompatActivity {
                 UserLocalData.setUserData(response, LoginActivity.this);
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
-                finish();
+//                finish();
             }
 
             @Override

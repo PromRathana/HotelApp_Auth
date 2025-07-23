@@ -2,6 +2,7 @@ package com.dochdonatello.hotelapp.network;
 
 import com.dochdonatello.hotelapp.data.remote.models.request.BaseRequest;
 import com.dochdonatello.hotelapp.data.remote.models.request.LoginRequest;
+import com.dochdonatello.hotelapp.data.remote.models.request.RegisterRequest;
 import com.dochdonatello.hotelapp.data.remote.models.response.BaseResponse;
 import com.dochdonatello.hotelapp.data.remote.models.response.Category;
 import com.dochdonatello.hotelapp.data.remote.models.response.LoginResponse;
@@ -20,9 +21,9 @@ public interface ApiNetwork {
     @POST("/api/oauth/token")
     Call<LoginResponse> login(@Body LoginRequest req);
 
-    //Logout
+    //Register
     @POST("/api/oauth/register")
-    Call<RegisterResponse> register(@Body LoginRequest req);
+    Call<RegisterResponse> register(@Body RegisterRequest req);
 
     //Category
     @POST("/api/app/category/list")
